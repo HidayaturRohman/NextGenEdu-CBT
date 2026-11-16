@@ -1,5 +1,4 @@
-# NextGenEdu-CBT (Garuda CBT CI4 Edition)
-
+# NextGenEdu-CBT 
 <p align="center">
   <img src="docs/img/garuda_white.svg" alt="Garuda CBT Logo" width="90" height="90" style="background: linear-gradient(135deg, #00c9a7, #00a88c); border-radius: 20px; padding: 12px;">
 </p>
