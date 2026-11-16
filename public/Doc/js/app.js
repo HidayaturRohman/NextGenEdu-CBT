@@ -588,7 +588,7 @@ function renderContent(pageId) {
         ${page.html}
         ${navHtml}
         <footer class="doc-footer text-center py-4 my-4" style="border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px;">
-            <div>Copyright &copy; NextGen Garuda CBT ${new Date().getFullYear()} Versi 1.5</div>
+            <div>Copyright &copy; Garuda CBT / NextGenEdu CBT ${new Date().getFullYear()} &bull; <a href="https://t.me/+UbHStB31PjM2YzZl" target="_blank" style="color: #229ED9;"><i class="fab fa-telegram-plane"></i> Komunitas Telegram</a> &bull; <a href="https://github.com/HidayaturRohman/NextGenEdu-CBT" target="_blank" style="color: var(--accent);"><i class="fab fa-github"></i> GitHub</a></div>
         </footer>
       `;
 

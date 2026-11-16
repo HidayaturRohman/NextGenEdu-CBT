@@ -7,7 +7,7 @@ const menuData = [
                 icon: 'fas fa-book-open',
                 label: 'Pendahuluan',
                 children: [
-                    { id: 'tentang-aplikasi', label: 'Tentang NextGen Garuda CBT', prev: null, next: 'persyaratan-sistem' },
+                    { id: 'tentang-aplikasi', label: 'Tentang GarudaCBT', prev: null, next: 'persyaratan-sistem' },
                     { id: 'persyaratan-sistem', label: 'Persyaratan Sistem', prev: 'tentang-aplikasi', next: 'tentang-panduan' },
                     { id: 'tentang-panduan', label: 'Tentang Panduan', prev: 'persyaratan-sistem', next: 'instalasi' }
                 ]
