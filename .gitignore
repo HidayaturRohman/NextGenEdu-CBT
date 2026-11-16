@@ -38,7 +38,10 @@ app/Controllers_original/
 build/
 dist/
 
-# Large binary files & backups (exceeds GitHub 100MB limit)
-public/downloads/*.exe
+# Large binary files, APKs, EXEs & backups (never push to github)
+public/downloads/*
+!public/downloads/.gitkeep
+public/download/*
+!public/download/.gitkeep
 public/backups/*
 !public/backups/.gitkeep
