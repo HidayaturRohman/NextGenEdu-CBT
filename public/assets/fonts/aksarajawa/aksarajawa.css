@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Aksara Jawa Font Integration for CBT & E-Learning (cbt160ci4)
+   Supports Offline Local Font & Online Google Font CDN Fallback
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'Noto Sans Javanese Local';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('NotoSansJavanese-Regular.ttf') format('truetype'),
+         url('javatext.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Javanese Local';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('NotoSansJavanese-Bold.ttf') format('truetype');
+}
+
+/* Base class for Aksara Jawa */
+.aksara-jawa, .font-jawa, [data-lang="jv"] {
+    font-family: 'Noto Sans Javanese Local', 'Noto Sans Javanese', 'Javanese Text', sans-serif !important;
+    font-size: 1.15em;
+    line-height: 1.8;
+}
+
+/* Comprehensive fallback across all exam areas (question stem, options, tables, inputs) */
+#soal-text, .soal-text, .soal-item, .opsi-item, .pilihan-jawaban, 
+.isi-soal, .card-body, table td, table th, .table, .custom-control-label,
+.soal, .jawaban, .media-body, .view-soal {
+    font-family: 'Inter', 'Noto Sans Javanese Local', 'Noto Sans Javanese', 'Javanese Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Ensure diacritics / sandhangan (wulu, suku, layar, cecak, dll) don't get clipped */
+.soal-text, .opsi-item, table td {
+    line-height: 1.6;
+}

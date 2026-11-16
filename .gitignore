@@ -1,0 +1,44 @@
+# Environment & Local Secrets
+.env
+.env.*
+!.env.example
+
+# State & Temp files from installer (Crucial: agar installer muncul saat pertama kali didownload)
+writable/installed.txt
+writable/install_progress.json
+writable/session_debug.txt
+writable/kiosk_exit_code.json
+
+# Writable cache, session, and logs
+writable/cache/*
+!writable/cache/.gitkeep
+writable/logs/*
+!writable/logs/.gitkeep
+writable/session/*
+!writable/session/.gitkeep
+writable/debugbar/*
+!writable/debugbar/.gitkeep
+writable/uploads/*
+!writable/uploads/.gitkeep
+!writable/.htaccess
+
+# Temporary and backup files
+*.bak
+*.tmp
+.phpunit.result.cache
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Original source backup (Never push original controllers to github)
+app/Controllers_original/
+build/
+dist/
+
+# Large binary files & backups (exceeds GitHub 100MB limit)
+public/downloads/*.exe
+public/backups/*
+!public/backups/.gitkeep

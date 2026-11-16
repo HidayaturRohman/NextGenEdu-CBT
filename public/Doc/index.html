@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Pengguna — NextGen Garuda CBT Versi 1.5</title>
+    <link rel="shortcut icon" href="img/garuda_black.svg" type="image/x-icon">
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=1.5">
+    <!-- Prevent FOUC by applying theme immediately -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light' || savedTheme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {
+                // Fallback to system preference if localStorage fails
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+
+<!-- Overlay untuk mobile sidebar -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ========== SIDEBAR ========== -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+        <div class="brand-icon p-1"><img src="img/garuda_white.svg" class="img-fluid"></div>
+        <div class="brand-text">
+            NextGen Garuda CBT
+            <small>Versi 1.5</small>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav">
+        <!-- Diisi oleh JavaScript -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="version-badge">
+        <i class="fas fa-code-branch"></i> Versi 1.5
+      </span>
+    </div>
+</aside>
+
+<!-- ========== MAIN ========== -->
+<div class="main-wrapper" id="mainWrapper">
+    <!-- Topbar -->
+    <header class="topbar">
+        <a class="btn-toggle-sidebar" id="btnToggleSidebar" aria-label="Toggle sidebar">
+            <i class="fas fa-bars"></i>
+        </a>
+        <div class="breadcrumb-custom" id="breadcrumb">
+            <span id="bcSection" class="bc-section">Panduan</span>
+            <span class="bc-sep">
+                <i class="fas fa-chevron-right" style="font-size:9px"></i>
+            </span>
+            <span class="bc-current" id="bcCurrent">Pendahuluan</span>
+            <span class="bc-sep">
+                <i class="fas fa-chevron-right" style="font-size:9px"></i>
+            </span>
+            <span class="bc-current" id="sub-bcCurrent">Tentang Panduan</span>
+        </div>
+        <div class="d-flex ml-auto">
+            <div class="topbar-search mr-2" id="topbarSearch">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Cari di panduan..." autocomplete="off">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <a class="btn-theme-toggle" id="btnThemeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Konten halaman -->
+    <main class="content-area" id="contentArea">
+        <!-- Diisi oleh JavaScript -->
+    </main>
+</div>
+
+<!-- Scroll to top -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Kembali ke atas">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Bootstrap 4 JS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Data Pages -->
+<script src="js/data/menu-data.js?v=1.5"></script>
+
+<!-- Mulai Section -->
+<script src="js/data/pages/tentang-panduan.js?v=1.5"></script>
+<script src="js/data/pages/tentang-aplikasi.js?v=1.5"></script>
+<script src="js/data/pages/persyaratan-sistem.js?v=1.5"></script>
+<script src="js/data/pages/instalasi.js?v=1.5"></script>
+<script src="js/data/pages/konfigurasi-awal.js?v=1.5"></script>
+<script src="js/data/pages/login-pertama.js?v=1.5"></script>
+<script src="js/data/pages/petunjuk-antarmuka.js?v=1.5"></script>
+<script src="js/data/pages/alur-awal-tahun.js?v=1.5"></script>
+<script src="js/data/pages/alur-ujian-cbt.js?v=1.5"></script>
+<script src="js/data/pages/alur-elearning.js?v=1.5"></script>
+<script src="js/data/pages/alur-rapor.js?v=1.5"></script>
+
+<!-- Dashboard Section -->
+<script src="js/data/pages/ringkasan-admin.js?v=1.5"></script>
+<script src="js/data/pages/info-box.js?v=1.5"></script>
+<script src="js/data/pages/ganti-tahun.js?v=1.5"></script>
+<script src="js/data/pages/upload-banner.js?v=1.5"></script>
+<script src="js/data/pages/ringkasan-guru.js?v=1.5"></script>
+<script src="js/data/pages/jadwal-harian.js?v=1.5"></script>
+<script src="js/data/pages/ringkasan-siswa.js?v=1.5"></script>
+<script src="js/data/pages/menu-siswa.js?v=1.5"></script>
+<script src="js/data/pages/siswa-bottom-nav.js?v=1.5"></script>
+
+<!-- Data Umum Section -->
+<script src="js/data/pages/tahun-ajaran.js?v=1.5"></script>
+<script src="js/data/pages/mata-pelajaran.js?v=1.5"></script>
+<script src="js/data/pages/jurusan.js?v=1.5"></script>
+<script src="js/data/pages/kelas-rombel.js?v=1.5"></script>
+<script src="js/data/pages/data-siswa.js?v=1.5"></script>
+<script src="js/data/pages/ekstrakurikuler.js?v=1.5"></script>
+<script src="js/data/pages/data-guru.js?v=1.5"></script>
+<script src="js/data/pages/buku-induk.js?v=1.5"></script>
+
+<!-- CBT Section -->
+<script src="js/data/pages/buat-bank-soal.js?v=1.5"></script>
+<script src="js/data/pages/tambah-soal.js?v=1.5"></script>
+<script src="js/data/pages/import-soal.js?v=1.5"></script>
+<script src="js/data/pages/jenis-soal.js?v=1.5"></script>
+<script src="js/data/pages/jenis-ujian.js?v=1.5"></script>
+<script src="js/data/pages/sesi.js?v=1.5"></script>
+<script src="js/data/pages/ruang.js?v=1.5"></script>
+<script src="js/data/pages/nomor-peserta.js?v=1.5"></script>
+<script src="js/data/pages/atur-ruang-sesi.js?v=1.5"></script>
+<script src="js/data/pages/buat-jadwal.js?v=1.5"></script>
+<script src="js/data/pages/alokasi-waktu.js?v=1.5"></script>
+<script src="js/data/pages/pengawas.js?v=1.5"></script>
+<script src="js/data/pages/token-cbt.js?v=1.5"></script>
+<script src="js/data/pages/cetak-cbt.js?v=1.5"></script>
+<script src="js/data/pages/aktivasi-peserta.js?v=1.5"></script>
+<script src="js/data/pages/status-siswa.js?v=1.5"></script>
+<script src="js/data/pages/monitoring.js?v=1.5"></script>
+<script src="js/data/pages/exambro-app.js?v=1.5"></script>
+<script src="js/data/pages/hasil-ujian.js?v=1.5"></script>
+<script src="js/data/pages/rekap-nilai.js?v=1.5"></script>
+<script src="js/data/pages/koreksi.js?v=1.5"></script>
+<script src="js/data/pages/analisis.js?v=1.5"></script>
+<script src="js/data/pages/cetak-hasil.js?v=1.5"></script>
+
+<!-- Presensi Siswa Section -->
+<script src="js/data/pages/presensi-scan-qr.js?v=1.5"></script>
+
+<!-- Portal Wali Kelas Section -->
+<script src="js/data/pages/wali-siswa.js?v=1.5"></script>
+<script src="js/data/pages/wali-struktur.js?v=1.5"></script>
+<script src="js/data/pages/wali-catatan.js?v=1.5"></script>
+
+<!-- E-Learning Section -->
+<script src="js/data/pages/atur-jadwal.js?v=1.5"></script>
+<script src="js/data/pages/kbm-setting.js?v=1.5"></script>
+<script src="js/data/pages/copy-jadwal.js?v=1.5"></script>
+<script src="js/data/pages/tambah-materi.js?v=1.5"></script>
+<script src="js/data/pages/upload-materi.js?v=1.5"></script>
+<script src="js/data/pages/arsip-materi.js?v=1.5"></script>
+<script src="js/data/pages/buat-tugas.js?v=1.5"></script>
+<script src="js/data/pages/nilai-tugas.js?v=1.5"></script>
+<script src="js/data/pages/absensi.js?v=1.5"></script>
+<script src="js/data/pages/perpustakaan.js?v=1.5"></script>
+
+<!-- Hasil E-Learning Section -->
+<script src="js/data/pages/nilai-materi-tugas.js?v=1.5"></script>
+<script src="js/data/pages/kehadiran-harian.js?v=1.5"></script>
+<script src="js/data/pages/kehadiran-bulanan.js?v=1.5"></script>
+<script src="js/data/pages/rekap-nilai-elearning.js?v=1.5"></script>
+
+<!-- Rapor Section -->
+<script src="js/data/pages/setting-rapor.js?v=1.5"></script>
+<script src="js/data/pages/rapor-mapel.js?v=1.5"></script>
+<script src="js/data/pages/kktp-tp.js?v=1.5"></script>
+<script src="js/data/pages/kkm.js?v=1.5"></script>
+<script src="js/data/pages/predikat.js?v=1.5"></script>
+<script src="js/data/pages/bobot-nilai.js?v=1.5"></script>
+<script src="js/data/pages/template-rapor.js?v=1.5"></script>
+<script src="js/data/pages/aturan-penilaian.js?v=1.5"></script>
+<script src="js/data/pages/ekstrakurikuler-rapor.js?v=1.5"></script>
+<script src="js/data/pages/catatan-rapor.js?v=1.5"></script>
+<script src="js/data/pages/kenaikan-kelas.js?v=1.5"></script>
+<script src="js/data/pages/sikap.js?v=1.5"></script>
+<script src="js/data/pages/nilai-pengetahuan.js?v=1.5"></script>
+<script src="js/data/pages/nilai-keterampilan.js?v=1.5"></script>
+<script src="js/data/pages/tarik-nilai-cbt.js?v=1.5"></script>
+<script src="js/data/pages/status-nilai.js?v=1.5"></script>
+<script src="js/data/pages/projek-p5-p2ra.js?v=1.5"></script>
+<script src="js/data/pages/catatan-wali.js?v=1.5"></script>
+<script src="js/data/pages/cetak-rapor-siswa.js?v=1.5"></script>
+<script src="js/data/pages/cetak-legger.js?v=1.5"></script>
+<script src="js/data/pages/ranking-dkn.js?v=1.5"></script>
+<script src="js/data/pages/kumpulan-rapor.js?v=1.5"></script>
+<script src="js/data/pages/data-alumni.js?v=1.5"></script>
+
+<!-- Pengaturan Section -->
+<script src="js/data/pages/profil-sekolah.js?v=1.5"></script>
+<script src="js/data/pages/admin.js?v=1.5"></script>
+<script src="js/data/pages/user-guru.js?v=1.5"></script>
+<script src="js/data/pages/user-siswa.js?v=1.5"></script>
+
+<!-- Database Section -->
+<script src="js/data/pages/db-management.js?v=1.5"></script>
+<script src="js/data/pages/backup-restore.js?v=1.5"></script>
+<script src="js/data/pages/db-clear-cleanup.js?v=1.5"></script>
+<script src="js/data/pages/img-converter.js?v=1.5"></script>
+<script src="js/data/pages/patch-version.js?v=1.5"></script>
+
+<!-- Informasi Section -->
+<script src="js/data/pages/pengumuman.js?v=1.5"></script>
+<script src="js/data/pages/log-aktivitas.js?v=1.5"></script>
+
+<!-- Lainnya Section -->
+<script src="js/data/pages/faq.js?v=1.5"></script>
+<script src="js/data/pages/tips.js?v=1.5"></script>
+<script src="js/data/pages/changelog.js?v=1.5"></script>
+<!-- App Logic -->
+<script src="js/app.js?v=1.5"></script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"2a28b9d03fab4204b0853231573d7a7f","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

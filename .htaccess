@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Jangan rewrite jika sudah di public/
+    RewriteRule ^public/ - [L]
+
+    # Jika file ada langsung di root (misal favicon, dll)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Semua request lainnya (termasuk direktori root) → public/$1
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+

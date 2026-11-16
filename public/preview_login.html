@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Desain Login CBT - Modern & Responsive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-accent: #06b6d4;
+            --emerald: #10b981;
+            --gold: #f59e0b;
+            --navy-dark: #0a101f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #080d1a;
+            position: relative;
+            overflow-x: hidden;
+            padding: 24px;
+        }
+
+        /* DYNAMIC ANIMATED AURORA MESH BACKGROUND */
+        .aurora-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 10%, #172554 0%, #080d1a 80%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            animation: floatOrb 20s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, #2563eb 0%, transparent 70%);
+            top: -120px;
+            left: -120px;
+        }
+        .orb-2 {
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, #059669 0%, transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            animation-duration: 24s;
+        }
+        .orb-3 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+            top: 35%;
+            left: 50%;
+            animation-duration: 18s;
+        }
+        .orb-4 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+            bottom: 20%;
+            left: 15%;
+            animation-duration: 21s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(70px, 50px) scale(1.12); }
+            100% { transform: translate(-50px, 90px) scale(0.92); }
+        }
+
+        /* CANVAS PARTICLES */
+        #particlesCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* MAIN CONTAINER CARD */
+        .login-card-container {
+            width: 100%;
+            max-width: 1050px;
+            min-height: 590px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 28px;
+            box-shadow: 
+                0 30px 80px -15px rgba(0, 0, 0, 0.65),
+                0 0 0 1px rgba(255, 255, 255, 0.3),
+                0 0 50px rgba(37, 99, 235, 0.25);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(20px);
+        }
+
+        /* ============================================================
+           SISI KIRI: FORM LOGIN (BAGIAN PUTIH)
+           ============================================================ */
+        .form-side {
+            flex: 1.15;
+            padding: 48px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            border-right: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Dekorasi ornamen halus di sudut form */
+        .form-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+            border-top-left-radius: 28px;
+            pointer-events: none;
+        }
+
+        /* BRANDING KHUSUS TAMPILAN MOBILE (HANYA MUNCUL DI HP) */
+        .brand-mobile {
+            display: none;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .brand-logo-mobile {
+            width: 74px;
+            height: 74px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+            border: 2px solid rgba(37, 99, 235, 0.2);
+            margin: 0 auto 12px;
+            display: inline-block;
+        }
+
+        .brand-mobile h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .brand-mobile p {
+            font-size: 0.86rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* HEADER BADGE (TAMPILAN DESKTOP) */
+        .brand-desktop {
+            display: block;
+        }
+
+        .form-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(6, 182, 212, 0.15) 100%);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            border-radius: 20px;
+            color: #1d4ed8;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .form-header-badge i {
+            color: #0284c7;
+            animation: pulse-icon 2s infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .form-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-subtitle {
+            font-size: 0.93rem;
+            color: #64748b;
+            margin-bottom: 28px;
+            line-height: 1.45;
+        }
+
+        /* INPUT FIELDS MEWAH */
+        .input-group-pro {
+            margin-bottom: 20px;
+        }
+
+        .input-label-pro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon-box {
+            position: absolute;
+            left: 14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            background: #f1f5f9;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            pointer-events: none;
+        }
+
+        .input-field-pro {
+            width: 100%;
+            height: 52px;
+            padding: 0 48px 0 54px;
+            background: #f8fafc;
+            border: 1.8px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 0.96rem;
+            color: #0f172a;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .input-field-pro:focus {
+            background: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.16);
+            outline: none;
+        }
+
+        .input-field-pro:focus ~ .input-icon-box,
+        .input-box:focus-within .input-icon-box {
+            background: linear-gradient(135deg, #2563eb, #0284c7);
+            color: #ffffff;
+            box-shadow: 0 3px 8px rgba(37, 99, 235, 0.35);
+        }
+
+        .toggle-pwd {
+            position: absolute;
+            right: 14px;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 1.05rem;
+            transition: color 0.2s;
+        }
+
+        .toggle-pwd:hover {
+            color: #1e293b;
+        }
+
+        /* REMEMBER & HELP ROW */
+        .form-utility-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            font-size: 0.86rem;
+        }
+
+        .custom-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: #475569;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .custom-check input {
+            accent-color: #2563eb;
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+        }
+
+        .help-link {
+            color: #2563eb;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        .help-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* MULTI-TONE GRADIENT BUTTON */
+        .btn-submit-pro {
+            width: 100%;
+            height: 54px;
+            background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 45%, #059669 100%);
+            background-size: 200% auto;
+            border: none;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px -4px rgba(2, 132, 199, 0.45);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit-pro::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.6s;
+        }
+
+        .btn-submit-pro:hover {
+            background-position: right center;
+            box-shadow: 0 14px 30px -4px rgba(5, 150, 105, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit-pro:hover::before {
+            left: 100%;
+        }
+
+        .btn-submit-pro:active {
+            transform: translateY(0);
+        }
+
+        /* SECURITY FOOTER BADGES */
+        .form-footer-pro {
+            margin-top: 26px;
+            padding-top: 18px;
+            border-top: 1px dashed #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: #059669;
+        }
+
+        /* ============================================================
+           SISI KANAN: HERO INFO PANEL (TAMPIL DI DESKTOP / LAYAR LEBAR)
+           ============================================================ */
+        .hero-side {
+            flex: 1;
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #0c1527 100%);
+            padding: 44px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        /* DOODLE WATERMARK EDUKASI */
+        .hero-doodle-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.09;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath fill='%23ffffff' d='M25 40 L45 20 L65 40 L45 60 Z M110 30 C120 20 135 20 145 30 C155 40 155 55 145 65 L125 85 L100 60 Z M30 110 L50 110 L50 130 L30 130 Z M100 120 L130 90 L140 100 L110 130 Z M80 20 L85 35 L100 35 L88 45 L92 60 L80 50 L68 60 L72 45 L60 35 L75 35 Z M15 80 L35 80 L25 100 Z M80 85 C95 85 95 105 80 105 C65 105 65 85 80 85 Z'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* GLOWING AMBIENT TOP LIGHT */
+        .hero-side::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 380px;
+            height: 220px;
+            background: radial-gradient(ellipse, rgba(56, 189, 248, 0.28) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* HEADER IDENTITAS SEKOLAH */
+        .hero-header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-box-glow {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .logo-wrap {
+            width: 86px;
+            height: 86px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(56, 189, 248, 0.35),
+                0 0 30px rgba(56, 189, 248, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-wrap:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        .logo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+        }
+
+        .app-name {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .school-name-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.86rem;
+            color: #fbbf24;
+            font-weight: 700;
+            background: rgba(245, 158, 11, 0.14);
+            border: 1px solid rgba(245, 158, 11, 0.32);
+            padding: 5px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            margin-bottom: 6px;
+        }
+
+        .school-address {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            max-width: 360px;
+            line-height: 1.4;
+        }
+
+        /* CYBER-GLOW DIGITAL CLOCK CARD */
+        .clock-card {
+            background: rgba(15, 23, 42, 0.72);
+            border: 1.5px solid rgba(56, 189, 248, 0.35);
+            border-radius: 20px;
+            padding: 16px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin: 18px 0;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                inset 0 0 25px rgba(56, 189, 248, 0.12);
+            backdrop-filter: blur(12px);
+        }
+
+        .clock-card-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #38bdf8;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .clock-time {
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            font-variant-numeric: tabular-nums;
+            color: #38bdf8;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.75);
+            line-height: 1.1;
+        }
+
+        .clock-date {
+            font-size: 0.86rem;
+            color: #cbd5e1;
+            margin-top: 6px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        /* GRID INFO TILES MEWAH */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-pill {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            padding: 12px 14px;
+            border-radius: 14px;
+            color: #e2e8f0;
+            gap: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .info-pill:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(56, 189, 248, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .info-pill.full-width {
+            grid-column: span 2;
+        }
+
+        .pill-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.18);
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        }
+
+        .pill-icon.green {
+            background: rgba(16, 185, 129, 0.22);
+            color: #34d399;
+        }
+
+        .pill-icon.gold {
+            background: rgba(251, 191, 36, 0.22);
+            color: #fbbf24;
+        }
+
+        .status-dot-active {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 12px #10b981;
+            animation: pulse-dot 1.8s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        .hero-motto {
+            position: relative;
+            z-index: 2;
+            margin-top: 14px;
+            padding: 8px 14px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* ============================================================
+           RESPONSIVE RULES: VERSI MOBILE HANYA PERLIHATKAN BAGIAN PUTIH!
+           ============================================================ */
+        @media (max-width: 880px) {
+            body { 
+                padding: 16px; 
+            }
+
+            .login-card-container {
+                max-width: 480px;
+                min-height: auto;
+                border-radius: 24px;
+            }
+
+            /* SISI KANAN (HERO-SIDE GELAP) DISEMBUNYIKAN TOTAL DI MOBILE SESUAI PERMINTAAN */
+            .hero-side {
+                display: none !important;
+            }
+
+            /* SISI KIRI (BAGIAN PUTIH) MENGISI PENUH LAYAR HP */
+            .form-side {
+                flex: 1;
+                padding: 36px 28px;
+                border-right: none;
+            }
+
+            /* MUNCULKAN LOGO & NAMA SEKOLAH DI ATAS FORM PADA HP */
+            .brand-mobile {
+                display: block !important;
+            }
+
+            /* SEMBUNYIKAN HEADER DESKTOP PADA HP AGAR TIDAK DOUBLE */
+            .brand-desktop {
+                display: none !important;
+            }
+
+            .form-title { 
+                font-size: 1.55rem; 
+                justify-content: center;
+            }
+
+            .form-subtitle {
+                text-align: center;
+                margin-bottom: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DYNAMIC AMBIENT AURORA BACKGROUND -->
+    <div class="aurora-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+    </div>
+
+    <!-- CANVAS PARTICLES -->
+    <canvas id="particlesCanvas"></canvas>
+
+    <!-- MAIN LOGIN CARD -->
+    <div class="login-card-container">
+        
+        <!-- SISI KIRI: FORM LOGIN (BAGIAN PUTIH YANG TAMPIL DI SEMUA LAYAR) -->
+        <div class="form-side">
+            <div>
+                <!-- HEADER KHUSUS MOBILE: LOGO & IDENTITAS SEKOLAH TERANGKAT -->
+                <div class="brand-mobile">
+                    <img src="https://cbt.mtshislah.sch.id/public/assets/img/favicon.png" alt="Logo MTs HISLAH" class="brand-logo-mobile" onerror="this.src='https://ui-avatars.com/api/?name=MTs+HISLAH&background=10b981&color=fff&size=128'">
+                    <h3>CBT MTs HISLAH</h3>
+                    <p>MTs Hidayatul Islamiyah - Plumpang, Tuban</p>
+                </div>
+
+                <!-- HEADER DESKTOP -->
+                <div class="brand-desktop">
+                    <div class="form-header-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>PORTAL CBT & E-LEARNING RESMI</span>
+                    </div>
+
+                    <h1 class="form-title">
+                        <span>Selamat Datang!</span>
+                        <span style="font-size: 1.4rem;">👋</span>
+                    </h1>
+                    <p class="form-subtitle">Silakan masukkan username & password akun Anda untuk masuk ke sistem.</p>
+                </div>
+
+                <!-- FORM INPUT SATU FORM RESMI (UNIFIED LOGIN) -->
+                <form onsubmit="event.preventDefault(); alert('Demo Login Berhasil!');">
+                    
+                    <div class="input-group-pro">
+                        <label class="input-label-pro">
+                            <span>Username / NIS / NIP</span>
+                            <span style="font-size: 0.76rem; color: #1d4ed8; font-weight: 600;"><i class="fas fa-check-circle me-1"></i>Akun Resmi</span>
+                        </label>
+                        <div class="input-box">
+                            <div class="input-icon-box">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <input type="text" class="input-field-pro" id="demoUsername" placeholder="Ketik username, NIS, atau NIP..." value="admin" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group-pro">
+                        <label class="input-label-pro">
+                            <span>Kata Sandi (Password)</span>
+                        </label>
+                        <div class="input-box">
+                            <div class="input-icon-box">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <input type="password" id="demoPwd" class="input-field-pro" placeholder="Masukkan kata sandi..." value="password123" required>
+                            <i class="fas fa-eye-slash toggle-pwd" onclick="togglePassword(this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-utility-row" style="justify-content: flex-end;">
+                        <a href="javascript:void(0)" class="help-link" onclick="alert('Jika Anda lupa password atau terkendala login, silakan hubungi Proktor atau Tim IT Madrasah.')">
+                            <i class="fas fa-question-circle"></i> Butuh Bantuan?
+                        </a>
+                    </div>
+
+                    <!-- TOMBOL SUBMIT GRADASI MEWAH -->
+                    <button type="submit" class="btn-submit-pro">
+                        <span>Login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SISI KANAN: HERO PANEL (HANYA MUNCUL DI DESKTOP / LAYAR LEBAR, OTOMATIS DISEMBUNYIKAN DI HP) -->
+        <div class="hero-side">
+            <!-- DOODLE WATERMARK -->
+            <div class="hero-doodle-bg"></div>
+
+            <!-- HEADER IDENTITAS -->
+            <div class="hero-header">
+                <div class="logo-box-glow">
+                    <div class="logo-wrap">
+                        <img src="https://cbt.mtshislah.sch.id/public/assets/img/favicon.png" alt="Logo MTs HISLAH" onerror="this.src='https://ui-avatars.com/api/?name=MTs+HISLAH&background=10b981&color=fff&size=128'">
+                    </div>
+                </div>
+                <h2 class="app-name">CBT MTs HISLAH</h2>
+                <div class="school-name-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>MTs Hidayatul Islamiyah</span>
+                </div>
+                <p class="school-address">Jl. Sumberagung No.45, Sumberagung, Kec. Plumpang, Kab. Tuban</p>
+            </div>
+
+            <!-- CLOCK CARD DENGAN CYBER GLOW -->
+            <div class="clock-card">
+                <div class="clock-card-label">
+                    <i class="fas fa-clock"></i>
+                    <span>Waktu Server Real-time</span>
+                </div>
+                <div class="clock-time" id="demoClock">--:--:--</div>
+                <div class="clock-date" id="demoDate">--</div>
+            </div>
+
+            <!-- GRID INFO TILES -->
+            <div>
+                <div class="info-grid">
+                    <div class="info-pill full-width">
+                        <div class="pill-icon green">
+                            <span class="status-dot-active"></span>
+                        </div>
+                        <div style="flex: 1;">
+                            <strong style="color: #ffffff; display: block; font-size: 0.88rem;">Server CBT Siap Ujian</strong>
+                            <span style="font-size: 0.78rem; color: #94a3b8;">Latency < 25ms • Koneksi Aman</span>
+                        </div>
+                        <span style="font-size: 0.72rem; background: rgba(16,185,129,0.2); color: #34d399; font-weight: 700; padding: 3px 8px; border-radius: 8px;">ONLINE</span>
+                    </div>
+
+                    <div class="info-pill">
+                        <div class="pill-icon gold">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #ffffff; display: block; font-size: 0.85rem;">NPSN : 20582845</strong>
+                            <span style="font-size: 0.76rem; color: #94a3b8;">Terakreditasi</span>
+                        </div>
+                    </div>
+
+                    <div class="info-pill">
+                        <div class="pill-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #ffffff; display: block; font-size: 0.85rem;">Kepala Madrasah</strong>
+                            <span style="font-size: 0.76rem; color: #94a3b8;">Abd. Rozak, S.Pd.I</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MOTTO TICKER -->
+                <div class="hero-motto">
+                    <i class="fas fa-quote-left" style="color: #fbbf24;"></i>
+                    <span>Junjung tinggi integritas & kejujuran saat ujian!</span>
+                    <i class="fas fa-quote-right" style="color: #fbbf24;"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT CLOCK, PARTICLES & INTERACTION -->
+    <script>
+        // LIVE DIGITAL CLOCK
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('demoClock').textContent = `${h}:${m}:${s}`;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('demoDate').textContent = now.toLocaleDateString('id-ID', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // PASSWORD TOGGLE
+        function togglePassword(icon) {
+            const pwd = document.getElementById('demoPwd');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                pwd.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+
+        // CANVAS FLOATING LUMINOUS PARTICLES
+        (function() {
+            const canvas = document.getElementById('particlesCanvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, particles = [];
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            for (let i = 0; i < 45; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: Math.random() * 2.2 + 0.8,
+                    dx: (Math.random() - 0.5) * 0.45,
+                    dy: (Math.random() - 0.5) * 0.45,
+                    color: Math.random() > 0.5 ? 'rgba(56, 189, 248, ' : 'rgba(16, 185, 129, ',
+                    alpha: Math.random() * 0.6 + 0.25
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                for (let p of particles) {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.x < 0) p.x = w;
+                    if (p.x > w) p.x = 0;
+                    if (p.y < 0) p.y = h;
+                    if (p.y > h) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color + p.alpha + ')';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = p.color + '1)';
+                    ctx.fill();
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+    </script>
+</body>
+</html>

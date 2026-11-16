@@ -1,0 +1,26 @@
+#--------------------------------------------------------------------
+# Example Environment Configuration file for CBT
+# Copy this file to .env or run the web installer at /install
+#--------------------------------------------------------------------
+
+#--------------------------------------------------------------------
+# ENVIRONMENT
+#--------------------------------------------------------------------
+CI_ENVIRONMENT = production
+
+#--------------------------------------------------------------------
+# APP
+#--------------------------------------------------------------------
+app.indexPage = ''
+# app.baseURL = 'http://localhost/cbtci4free/'
+
+#--------------------------------------------------------------------
+# DATABASE
+#--------------------------------------------------------------------
+database.default.hostname = 'localhost'
+database.default.database = 'cbt_db'
+database.default.username = 'root'
+database.default.password = ''
+database.default.DBDriver = MySQLi
+database.default.charset = utf8
+database.default.port = 3306

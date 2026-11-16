@@ -1,0 +1,487 @@
+<?= $this->extend('layout/dashboard_template_bs5') ?>
+<?= $this->section('content') ?>
+
+    <div class="row">
+  <div class="col-sm-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="d-flex align-items-center">
+              <div class="me-3 flex-shrink-0">
+                <div class="rounded-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px; background: linear-gradient(135deg, #06b6d4 0%, #0e7490 100%); color: #ffffff;">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"></path>
+                    <path d="M18 22V6l-6-4-6 4v16"></path>
+                    <path d="M6 12h12"></path>
+                    <path d="M6 16h12"></path>
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h4 class="card-title mb-1 fw-bold d-flex align-items-center">
+                    <?= $judul ?>
+                </h4>
+                <p class="text-muted mb-0" style="font-size: 0.9rem;">Manajemen rombongan belajar (rombel), penetapan wali kelas, tingkat kelas, dan kuota ruang kelas.</p>
+              </div>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card  mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-title d-flex align-items-center">
+                        <iconify-icon icon="lucide:layout-template" class="me-2 text-primary" style="font-size: 1.4rem;"></iconify-icon>
+                        <span style="font-size: 1.25rem; font-weight: 700; color: #232D42;"><?= $subjudul ?></span>
+                    </div>
+                    <div class="card-tools d-flex gap-2">
+                        <a type="button" href="<?= base_url('datakelas') ?>" class="btn btn-sm btn-secondary"
+                           data-toggle="tooltip" title="Reload"><i class="fa fa-sync"></i> <span class="d-none d-sm-inline-block ms-1">Reload</span>
+                        </a>
+                        <span data-toggle="tooltip" title="Tambah Kelas">
+                            <a href="<?= base_url('datakelas/add') ?>" type="button"
+                               class="btn btn-sm btn-success text-white">
+                                <svg class="icon-20 me-1" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> <span class="d-none d-sm-inline-block ms-1">Kelas</span>
+                            </a>
+                        </span>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#bulkModal"
+                                class="btn btn-sm btn-info text-white"><svg class="icon-20 me-1" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> <span class="d-none d-sm-inline-block ms-1">Sekaligus</span>
+                        </button>
+
+                        <?php if ($smt_active->id_smt == '2') : ?>
+                            <span data-toggle="tooltip" title="Manajemen Kelas">
+                                <a href="<?= base_url('datakelas/manage') ?>" type="button"
+                                   class="btn btn-sm btn-primary">
+                                    <i class="fas fa-tools me-1"></i> <span class="d-none d-sm-inline-block ms-1">Atur Kelas Semester</span>
+                                </a>
+                            </span>
+                        <?php endif; ?>
+                        <?php if ($smt_active->id_smt == '1') : ?>
+                            <span data-toggle="tooltip" title="Kenaikan Kelas">
+                                <a href="<?= base_url('datakelas/kenaikan') ?>" type="button"
+                                   class="btn btn-sm btn-primary">
+                                    <i class="fas fa-tools me-1"></i> <span class="d-none d-sm-inline-block ms-1">Kenaikan Kelas</span>
+                                </a>
+                            </span>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 alert alert-default-info align-content-center" role="alert">
+                            <ul>
+                                <li>
+                                    <span class="badge bg-success text-white"><svg class="icon-20 me-1" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Kelas</span>
+                                    dan <span class="badge bg-info text-white"><svg class="icon-20 me-1" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Sekaligus</span> digunakan untuk menambah kelas baru jika kelas tidak ada pada tahun atau semester sebelumnya
+                                </li>
+                                <li>
+                                    Jika kelas sudah ada di Tahun atau semester sebelumnya, maka anda bisa menyalin dari kelas tersebut dengan klik tombol
+                                    <?php if ($smt_active->id_smt == '2'): ?>
+                                        <span class="badge bg-primary text-white"><i class="fas fa-tools me-1"></i> Atur Kelas Semester</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-primary text-white"><i class="fas fa-tools me-1"></i> Kenaikan Kelas</span>
+                                    <?php endif; ?>
+                                </li>
+                            <?php if ($smt_active->id_smt == '2'): ?>
+                                <li>
+                                    <span class="badge bg-primary text-white"><i class="fas fa-tools me-1"></i> Atur Kelas Semester</span>
+                                    digunakan jika ingin menyalin semua data kelas dari SMT I ke SMT II
+                                </li>
+                            <?php else: ?>
+                                <li>
+                                    <span class="badge bg-primary text-white"><i class="fas fa-tools me-1"></i> Kenaikan Kelas</span>
+                                    digunakan untuk mengatur kenaikan kelas, siswa akan otomatis dipindahkan ke
+                                    tahun pelajaran berikutnya sesuai kelasnya
+                                </li>
+                            <?php endif; ?>
+                                <li>
+                                    Tombol <span class="badge bg-success text-white"><i class="fa fa-upload"></i></span> pada tabel digunakan untuk mengimpor data siswa secara massal untuk setiap kelas
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php
+                    if (count($kelas) === 0) : ?>
+                        <div class="col-12">
+                            <div class="alert alert-default-warning shadow align-content-center" role="alert">
+                                Belum ada data kelas untuk Tahun Pelajaran <b><?= $tp_active->tahun ?></b> Semester:
+                                <b><?= $smt_active->smt ?></b>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                    <div class="table-responsive">
+                        <table id="table-kelas" class="w-100 table table-sm table-striped table-bordered table-hover">
+                            <thead>
+                            <tr class="alert alert-info">
+                                <th height="40" class="text-center align-middle p-0">No.</th>
+                                <th class="align-middle">Nama Kelas</th>
+                                <?php if ($setting->jenjang == '3') : ?>
+                                    <th class="align-middle text-center">Jurusan</th>
+                                <?php endif; ?>
+                                <th class="align-middle text-center">Jumlah<br/>Siswa</th>
+                                <th class="align-middle">Wali Kelas</th>
+                                <th class="align-middle text-center">Import<br/>Siswa</th>
+                                <th class="text-center align-middle p-0" style="width: 180px"><span>Aksi</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($kelas as $kls) : ?>
+                                <tr>
+                                    <td class="align-middle text-center"><?= $no ?></td>
+                                    <td class="align-middle"><?= $kls->nama_kelas ?></td>
+                                    <?php if ($setting->jenjang == '3') : ?>
+                                        <td class="align-middle text-center"><?= $kls->nama_jurusan ?></td>
+                                    <?php endif; ?>
+                                    <td class="align-middle text-center"><?= $kls->jml_siswa ?></td>
+                                    <td class="align-middle"><?= $kls->nama_guru ?></td>
+                                    <td class="align-middle text-center">
+                                        <span data-toggle="tooltip" title="Import Siswa ke Kelas Ini">
+										<a type="button" href="<?= base_url('datasiswa/add/' . $kls->id_kelas) ?>"
+                                           class="btn btn-success text-white btn-xs me-1 shadow-sm">
+											<i class="fa fa-upload"></i>
+										</a>
+									</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <div class="btn-group btn-group-xs">
+                                <span data-toggle="tooltip" title="Lihat Detail Kelas">
+										<a type="button" href="<?= base_url('datakelas/detail/' . $kls->id_kelas) ?>"
+                                           class="btn btn-info text-white btn-xs me-1 shadow-sm">
+											<i class="fa fa-eye"></i>
+										</a>
+									</span>
+                                            <span data-toggle="tooltip" title="Edit Kelas">
+										<a type="button" href="<?= base_url('datakelas/edit/' . $kls->id_kelas) ?>"
+                                           class="btn btn-warning text-white btn-xs me-1 shadow-sm">
+											<i class="fa fa-pencil-alt"></i>
+										</a>
+									</span>
+                                            <button data-id="<?= $kls->id_kelas ?>" type="button"
+                                                    class="btn-xs btn btn-danger shadow-sm hapuskelas" data-toggle="tooltip"
+                                                    title="Hapus Data Kelas">
+                                                <i class="far fa-trash-alt text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                                $no++; endforeach;
+                            endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade" id="bulkModal" tabindex="-1" role="dialog" aria-labelledby="bulkModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bulkModalLabel">Tambah Kelas Sekaligus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <?= form_open('', array('id' => 'bulk-create')) ?>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Format Tingkat*</label>
+                    <div class="col-8">
+                        <select id="formatAngka" name="formatAngka" class="form-control" required>
+                            <option value="" selected>Pilih Format</option>
+                            <option value="romawi">Angka Romawi</option>
+                            <option value="biasa">Angka Biasa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Tingkat*</label>
+                    <div class="col-8">
+                        <select id="level" name="level" class="form-control" required="">
+                            <option value="0" selected disabled>Pilih Level Kelas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Jumlah*</label>
+                    <div class="col-8">
+                        <input type="number" id="jumlah" name="jumlah" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Format Kelas*</label>
+                    <div class="col-8">
+                        <select id="char" name="char" class="form-control" required="">
+                            <option value="0" selected disabled>Pilih jenis</option>
+                            <option value="huruf">Huruf</option>
+                            <option value="angka">Angka</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Mulai dari*</label>
+                    <div class="col-8">
+                        <select id="awal" name="awal" class="form-control" required="">
+                            <option value="0" selected disabled>Kelas awal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="border border-secondary p-2">
+                    <div class="text-bold">Preview Hasil:</div>
+                    <div id="hasil-kelas" class="mt-1">
+                        <span class="font-italic">Isi semua field untuk melihat hasil</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary"><svg class="icon-20 me-1" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+    const jenjang = '<?= $setting->jenjang ?>';
+    let lvl, jml, char, awal, formatAngka;
+    let tempArrKelas = [];
+    $(document).ready(function () {
+        ajaxcsrf();
+
+        $('#table-kelas').dataTable({
+            paging: false,
+            order: [],"aoColumnDefs": [
+                {"bSortable": false,"aTargets": [0,5]},
+            ],
+        })
+
+        $('.hapuskelas').click(function (e) {
+            var kelas = $(this).data('id');
+            swal.fire({
+                title:"Hapus Data Kelas?",
+                text:"Kelas beserta jumlah siswa akan dihapus",
+                icon:"warning",
+                showCancelButton: true,
+                confirmButtonColor:"#3085d6",
+                cancelButtonColor:"#d33",
+                confirmButtonText:"Hapus"
+            }).then(result => {
+                if (result.value) {
+                    $.ajax({
+                        url: base_url + 'datakelas/hapus/'+kelas,
+                        method:"GET",
+                        success: function (respon) {
+                            console.log(respon);
+                            if (respon.kelas) {
+                                window.location.href = base_url +'datakelas';
+                            } else {
+                                swal.fire({
+                                    title:"Gagal",
+                                    text:"Tidak bisa menghapus kelas",
+                                    icon:"error"
+                                });
+                            }
+                        },
+                        error: function (xhr, error, status) {
+                            console.log(xhr.responseText);
+                            swal.fire({
+                                title:"Gagal",
+                                text:"Tidak bisa menghapus kelas",
+                                icon:"error"
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        const opsiFormat = $('#formatAngka');
+        const opsiLevel = $('#level');
+        opsiFormat.change(function () {
+            formatAngka = $(this).val();
+            opsiLevel.empty();
+            opsiLevel.prepend('<option value="" selected disabled>Pilih Level Kelas</option>');
+            let arrLvl = [];
+            if (jenjang === '1') {
+                arrLvl = ['1', '2', '3', '4', '5', '6'];
+            } else if (jenjang === '2') {
+                arrLvl = ['7', '8', '9'];
+            } else if (jenjang === '3') {
+                arrLvl = ['10', '11', '12'];
+            }
+            const formatValue = (val) => {
+                return formatAngka === 'romawi' ? toRoman(val) : val;
+            };
+            for (const level of arrLvl) {
+                opsiLevel.append('<option value="' + level + '">' + formatValue(level) + '</option>');
+            }
+        });
+
+        opsiLevel.change(function () {
+            lvl = $(this).val();
+        });
+        const opsiJumlah = $('#jumlah');
+        opsiJumlah.change(function () {
+            jml = $(this).val();
+        });
+        const opsiChar = $('#char');
+        const opsiAwal = $('#awal');
+        opsiChar.change(function () {
+            char = $(this).val();
+            opsiAwal.empty();
+            opsiAwal.append('<option disabled selected>Kelas awal</option>');
+            if (char === 'angka') {
+                for (let i = 1; i <= 20; i++) {
+                    opsiAwal.append('<option value="' + i + '">' + i + '</option>');
+                }
+            } else if (char === 'huruf') {
+                const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+                const alphabet = alpha.map((x) => String.fromCharCode(x));
+                for (const string of alphabet) {
+                    opsiAwal.append('<option value="' + string + '">' + string + '</option>');
+                }
+            }
+        });
+        opsiAwal.change(function () {
+            awal = $(this).val();
+        });
+
+        $('#level, #jumlah, #char, #awal, #formatAngka').change(function () {
+            if ($('#level').val() && $('#jumlah').val() && $('#char').val() && $('#awal').val() && $('#formatAngka').val()) {
+                generateNamaKelas();
+            } else {
+                $('#hasil-kelas').html('<span class="font-italic">Isi semua field untuk melihat hasil</span>');
+            }
+        });
+
+        $('#bulk-create').submit(function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            $('#bulkModal').modal('hide');
+            let form = new FormData($(this)[0])
+            form.append('kelas', JSON.stringify(tempArrKelas));
+            $.ajax({
+                url: base_url + 'datakelas/bulk_create',
+                method:"POST",
+                processData: false,
+                contentType: false,
+                data: form,
+                success: function (respon) {
+                    console.log('bulk', respon);
+                    if (respon.success) {
+                        swal.fire({
+                            title:"Berhasil",
+                            text: respon.insert +" Kelas berhasil ditambahkan",
+                            icon:"success"
+                        }).then(result => {
+                            if (result.value) {
+                                window.location.href = base_url +'datakelas';
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title:"Gagal",
+                            text: respon.insert +" Kelas gagal disimpan",
+                            icon:"error"
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr);
+                    Swal.fire({
+                        title:"ERROR!",
+                        html: xhr.responseText,
+                        icon:"error"
+                    });
+                }
+            });
+
+            tempArrKelas = [];
+        });
+
+        $('#bulkModal').on('hidden.bs.modal', function () {
+            // Reset semua input
+            $('#bulkModal form')[0].reset();
+            $('#hasil-kelas').html('<span class="font-italic">Isi semua field untuk melihat hasil</span>');
+
+            // Reset variabel JS
+            lvl = null;
+            jml = null;
+            char = null;
+            awal = null;
+            formatAngka = null;
+            tempArrKelas = [];
+        });
+    });
+
+    function generateNamaKelas() {
+        tempArrKelas = [];
+        const jumlah = parseInt(jml);
+        const hasil = [];
+
+        // Format angka biasa atau romawi
+        const formatValue = (val) => {
+            return formatAngka === 'romawi' ? toRoman(val) : val;
+        };
+
+        if (char === 'angka') {
+            let start = parseInt(awal);
+            for (let i = 0; i < jumlah; i++) {
+                let kelas = {};
+                kelas['level_id'] = lvl;
+                kelas['nama_kelas'] = `${formatValue(lvl)} ${start + i}`;
+                kelas['kode_kelas'] = `${formatValue(lvl)}${start + i}`;
+                kelas['id_tp'] = '<?= $tp_active->id_tp ?>';
+                kelas['id_smt'] = '<?= $smt_active->id_smt ?>';
+                kelas['jumlah_siswa'] = '[]';
+                tempArrKelas.push(kelas);
+                hasil.push(`${formatValue(lvl)} ${start + i}`);
+            }
+        } else if (char === 'huruf') {
+            const alpha = Array.from(Array(26)).map((_, i) => String.fromCharCode(65 + i));
+            let startIdx = alpha.indexOf(awal.toUpperCase());
+            for (let i = 0; i < jumlah; i++) {
+                let kelas = {};
+                kelas['level_id'] = lvl;
+                kelas['nama_kelas'] = `${formatValue(lvl)} ${alpha[startIdx + i]}`;
+                kelas['kode_kelas'] = `${formatValue(lvl)}${alpha[startIdx + i]}`;
+                kelas['id_tp'] = '<?= $tp_active->id_tp ?>';
+                kelas['id_smt'] = '<?= $smt_active->id_smt ?>';
+                kelas['jumlah_siswa'] = '[]';
+                tempArrKelas.push(kelas);
+                hasil.push(`${formatValue(lvl)} ${alpha[startIdx + i]}`);
+            }
+        }
+        $('#hasil-kelas').html(hasil.map((n) => `<span class="badge badge-info text-sm">${n}</span>`).join(' '));
+    }
+
+    function toRoman(num) {
+        const roman = [
+            ['M',1000],['CM',900],['D',500],['CD',400],
+            ['C',100],['XC',90],['L',50],['XL',40],
+            ['X',10],['IX',9],['V',5],['IV',4],['I',1]
+        ];
+        let result = '';
+        for (const [r, v] of roman) {
+            while (num >= v) {
+                result += r;
+                num -= v;
+            }
+        }
+        return result;
+    }
+</script>
+
+<?= $this->endSection() ?>
