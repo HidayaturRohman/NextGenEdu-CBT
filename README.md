@@ -20,7 +20,7 @@
 
 ## 📌 Apa itu NextGenEdu-CBT?
 
-**NextGenEdu-CBT** (Garuda CBT Modern Edition) adalah platform manajemen pendidikan berbasis web yang dirancang khusus untuk kebutuhan sekolah dan madrasah di Indonesia. Mengintegrasikan berbagai modul krusial dalam satu sistem: mulai dari pelaksanaan **Asesmen/Ujian Berbasis Komputer (CBT)**, **Pembelajaran Daring (E-Learning)**, hingga **Pengolahan Rapor Digital (Kurikulum Merdeka & K13)**.
+**NextGenEdu-CBT**  adalah platform manajemen pendidikan berbasis web yang dirancang khusus untuk kebutuhan sekolah dan madrasah di Indonesia. Mengintegrasikan berbagai modul krusial dalam satu sistem: mulai dari pelaksanaan **Asesmen/Ujian Berbasis Komputer (CBT)**, **Pembelajaran Daring (E-Learning)**, hingga **Pengolahan Rapor Digital (Kurikulum Merdeka & K13)**.
 
 Dilengkapi dengan sistem cerdas **Dual Nomenklatur Otomatis** yang dapat mendeteksi entitas satuan pendidikan di bawah naungan **Kementerian Agama (Kemenag RI)** maupun **Kemendikbudristek** (`Kepala Madrasah` vs `Kepala Sekolah`).
 
