@@ -1,6 +1,7 @@
-# NextGenEdu-CBT 
+# NextGenEdu-CBT
+
 <p align="center">
-  <img src="docs/img/garuda_white.svg" alt="Garuda CBT Logo" width="90" height="90" style="background: linear-gradient(135deg, #00c9a7, #00a88c); border-radius: 20px; padding: 12px;">
+  <img src="docs/img/garuda_white.svg" alt="NextGenEdu CBT Logo" width="90" height="90" style="background: linear-gradient(135deg, #00c9a7, #00a88c); border-radius: 20px; padding: 12px;">
 </p>
 
 <p align="center">
@@ -20,7 +21,7 @@
 
 ## 📌 Apa itu NextGenEdu-CBT?
 
-**NextGenEdu-CBT**  adalah platform manajemen pendidikan berbasis web yang dirancang khusus untuk kebutuhan sekolah dan madrasah di Indonesia. Mengintegrasikan berbagai modul krusial dalam satu sistem: mulai dari pelaksanaan **Asesmen/Ujian Berbasis Komputer (CBT)**, **Pembelajaran Daring (E-Learning)**, hingga **Pengolahan Rapor Digital (Kurikulum Merdeka & K13)**.
+**NextGenEdu-CBT** adalah platform manajemen pendidikan berbasis web yang dirancang khusus untuk kebutuhan sekolah dan madrasah di Indonesia. Mengintegrasikan berbagai modul krusial dalam satu sistem: mulai dari pelaksanaan **Asesmen/Ujian Berbasis Komputer (CBT)**, **Pembelajaran Daring (E-Learning)**, hingga **Pengolahan Rapor Digital (Kurikulum Merdeka & K13)**.
 
 Dilengkapi dengan sistem cerdas **Dual Nomenklatur Otomatis** yang dapat mendeteksi entitas satuan pendidikan di bawah naungan **Kementerian Agama (Kemenag RI)** maupun **Kemendikbudristek** (`Kepala Madrasah` vs `Kepala Sekolah`).
 

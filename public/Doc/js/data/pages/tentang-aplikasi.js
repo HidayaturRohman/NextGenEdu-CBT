@@ -121,13 +121,13 @@ document.addEventListener('keydown', function(e) {
 // KONTEN HALAMAN
 // ============================================
 pageContents['tentang-aplikasi'] = {
-    title: 'Tentang Garuda CBT',
-    desc: 'Gabungan Aplikasi Rapor, Ujian dan e-Learning (Garuda CBT)',
+    title: 'Tentang NextGenEdu CBT',
+    desc: 'Gabungan Aplikasi Rapor, Ujian dan e-Learning (NextGenEdu CBT)',
     html: `
     <div class="content-card">
-        <h2><i class="fas fa-info-circle text-info"></i> Apa itu Garuda CBT</h2>
+        <h2><i class="fas fa-info-circle text-info"></i> Apa itu NextGenEdu CBT</h2>
         <p>
-            <strong>Garuda CBT</strong> adalah Gabungan Aplikasi Rapor, Ujian dan e-Learning.
+            <strong>NextGenEdu CBT</strong> adalah Gabungan Aplikasi Rapor, Ujian dan e-Learning.
             Aplikasi berbasis web yang dirancang khusus untuk kebutuhan pendidikan di Indonesia, 
             mengintegrasikan berbagai modul penting dalam satu platform yang mudah digunakan — 
             mulai dari pelaksanaan ujian/ulangan, e-learning, hingga manajemen rapor sekolah/madrasah.
